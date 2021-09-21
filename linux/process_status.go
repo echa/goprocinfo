@@ -235,7 +235,7 @@ func ReadProcessStatus(path string) (*ProcessStatus, error) {
 		case "RssFile":
 			{
 				f := strings.Fields(v)
-				if status.RssAnon, err = strconv.ParseUint(f[0], 10, 64); err != nil {
+				if status.RssFile, err = strconv.ParseUint(f[0], 10, 64); err != nil {
 					return nil, err
 				}
 			}
