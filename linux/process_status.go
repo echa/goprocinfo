@@ -35,6 +35,9 @@ type ProcessStatus struct {
 	VmLib                    uint64
 	VmPTE                    uint64
 	VmSwap                   uint64
+	RssAnon                  uint64
+	RssFile                  uint64
+	RssShmem                 uint64
 	Threads                  uint64
 	SigQLength               uint64
 	SigQLimit                uint64
@@ -219,6 +222,27 @@ func ReadProcessStatus(path string) (*ProcessStatus, error) {
 			{
 				f := strings.Fields(v)
 				if status.VmSwap, err = strconv.ParseUint(f[0], 10, 64); err != nil {
+					return nil, err
+				}
+			}
+		case "RssAnon":
+			{
+				f := strings.Fields(v)
+				if status.RssAnon, err = strconv.ParseUint(f[0], 10, 64); err != nil {
+					return nil, err
+				}
+			}
+		case "RssFile":
+			{
+				f := strings.Fields(v)
+				if status.RssAnon, err = strconv.ParseUint(f[0], 10, 64); err != nil {
+					return nil, err
+				}
+			}
+		case "RssShmem":
+			{
+				f := strings.Fields(v)
+				if status.RssShmem, err = strconv.ParseUint(f[0], 10, 64); err != nil {
 					return nil, err
 				}
 			}
